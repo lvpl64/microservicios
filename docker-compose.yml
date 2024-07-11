@@ -1,0 +1,30 @@
+version: '3'
+services:
+    ### Posgres database for usuario
+    db-usuario:
+        container_name: db-usuario
+        image: postgres:16
+        restart: unless-stopped
+        environment:
+            POSTGRES_DB: micro-sysvita-usuarios
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: 2879Alex
+        ports:
+            - "5432:5432"
+        expose:
+            - "5432"
+        command: -p 5432
+    ### MySQL database for estudiantes
+    db-estudiantes:
+        container_name: db-estudiantes
+        image: mysql:8.0.38
+        restart: unless-stopped
+        environment:
+            MYSQL_DATABASE: micro-sysvita-estudiantes
+            MYSQL_USER: root
+            MYSQL_PASSWORD: 1234
+            MYSQL_ROOT_PASSWORD: root
+        ports:
+            - "3306:3306"
+        expose:
+            - "3306"
